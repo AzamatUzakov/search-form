@@ -12,10 +12,10 @@ import { User } from "@/types";
 
 interface SearchFormProps {
 	users: Array<User>;
-	setUsers: (array: any) => void
+	setFiltered: (array: any) => void
 }
 
-const SearchForm: React.FC<SearchFormProps> = ({ users, setUsers }) => {
+const SearchForm: React.FC<SearchFormProps> = ({ users, setFiltered }) => {
 	const [search, setSearch] = useState<string>("");
 
 	useEffect(() => {
@@ -23,7 +23,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ users, setUsers }) => {
 			user.name.toLowerCase().includes(search.toLowerCase().trim())
 		);
 
-		setUsers(filtered);
+		setFiltered(filtered);
 	}, [search]);
 
 	return (
@@ -37,12 +37,15 @@ const SearchForm: React.FC<SearchFormProps> = ({ users, setUsers }) => {
 					<Input
 						placeholder="seach"
 						name="search"
-						onKeyUp={(e) => setSearch(e.target.value)}
-					/>
+						onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
+							const target = e.target as HTMLInputElement;
+							setSearch(target.value);
+						}}					/>
 					<Button variant="outline">search</Button>
 				</form>
 			</CardContent>
 		</Card>
+
 	);
 };
 

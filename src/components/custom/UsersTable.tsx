@@ -9,10 +9,10 @@ import {
 import { User } from "@/types";
 
 interface UsersTableProps {
-	users: Array<User>;
+	filtered: Array<User>;
 }
 
-const UsersTable: React.FC<UsersTableProps> = ({ users }) => {
+const UsersTable: React.FC<UsersTableProps> = ({ filtered }) => {
 	return (
 		<Table className="w-[70%] m-0-auto">
 			<TableHeader>
@@ -23,7 +23,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ users }) => {
 				</TableRow>
 			</TableHeader>
 			<TableBody>
-				{users.map((user) => (
+				{filtered.map((user) => (
 					<TableRow key={user.id}>
 						<TableCell>{user.name}</TableCell>
 						<TableCell>{user.email}</TableCell>

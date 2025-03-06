@@ -5,18 +5,21 @@ import { useEffect, useState } from "react";
 
 function App() {
 	const [users, setUsers] = useState([]);
-
+	const [filtered, setFiltered] = useState<any>([])
 	useEffect(() => {
 		fetch("https://jsonplaceholder.typicode.com/users")
 			.then((response) => response.json())
-			.then((data) => setUsers(data));
+			.then((data) => {
+				setUsers(data)
+				setFiltered(data)
+			})
 	}, []);
 
 	return (
 		<center>
-			<SearchForm users={users} setUsers={setUsers} />
+			<SearchForm users={users} setFiltered={setFiltered} />
 
-			<UsersTable users={users} />
+			<UsersTable filtered={filtered} />
 		</center>
 	);
 }
