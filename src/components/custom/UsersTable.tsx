@@ -14,8 +14,8 @@ interface UsersTableProps {
 
 const UsersTable: React.FC<UsersTableProps> = ({ filtered }) => {
 	return (
-		<Table className="w-[70%] m-0-auto">
-			<TableHeader>
+		<Table className="w-[70%] m-0-auto" >
+			<TableHeader className="bg-gray-200">
 				<TableRow>
 					<TableCell>Fullname</TableCell>
 					<TableCell>Email</TableCell>
