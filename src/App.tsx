@@ -16,11 +16,13 @@ function App() {
 	}, []);
 
 	return (
-		<center>
-			<SearchForm users={users} setFiltered={setFiltered} />
+		<div className="p-5">
+			<center>
+				<SearchForm users={users} setFiltered={setFiltered} />
 
-			<UsersTable filtered={filtered} />
-		</center>
+				<UsersTable filtered={filtered} />
+			</center>
+		</div>
 	);
 }
 

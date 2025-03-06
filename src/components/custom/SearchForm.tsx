@@ -24,24 +24,33 @@ const SearchForm: React.FC<SearchFormProps> = ({ users, setFiltered }) => {
 		);
 
 		setFiltered(filtered);
-	}, [search]);
+	}, [search, users]);
+
+	const enterSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault()
+		const filtered = users.filter((user) =>
+			user.name.toLowerCase().includes(search.toLowerCase().trim())
+		);
+		setFiltered(filtered)
+	}
 
 	return (
-		<Card className="p-4 w-[400px]">
+		<Card className="p-4 w-[400px] mb-7">
 			<CardHeader>
 				<CardTitle>Search bar</CardTitle>
 				<CardDescription>Type user name</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<form className="flex items-center gap-2">
+				<form className="flex items-center gap-2" onSubmit={enterSubmit} >
+
 					<Input
 						placeholder="seach"
 						name="search"
 						onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
 							const target = e.target as HTMLInputElement;
 							setSearch(target.value);
-						}}					/>
-					<Button variant="outline">search</Button>
+						}} />
+					<Button variant="outline" type="submit">search</Button>
 				</form>
 			</CardContent>
 		</Card>
