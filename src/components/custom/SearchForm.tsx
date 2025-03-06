@@ -50,7 +50,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ users, setFiltered }) => {
 							const target = e.target as HTMLInputElement;
 							setSearch(target.value);
 						}} />
-					<Button variant="outline" type="submit">search</Button>
+					<Button variant="outline" type="submit" className="cursor-pointer">search</Button>
 				</form>
 			</CardContent>
 		</Card>
